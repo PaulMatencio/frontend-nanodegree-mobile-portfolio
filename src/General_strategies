@@ -1,0 +1,24 @@
+General strategies and CRP Diagrams
+
+1) Minimize bytes
+2) Reduce  critical resources
+3) Shorten CRP length
+
+
+
+
+Minify, Compress , Cache
+	HTML, CSS. JavaScript
+
+Minimize use of render blocking resources (CSS)
+	Use mediq queries on <limk> to unblock rendering 
+	inline CSS
+
+
+Minimize use of parser blocking resources (JS)
+	Defer JavaScript execution
+	Use async attribute on <script>
+
+
+
+http://csstriggers.com/
