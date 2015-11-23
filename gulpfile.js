@@ -11,7 +11,7 @@ var gulp = require('gulp'),
     minifyHTML = require('gulp-minify-html');;
 
 const imagemin = require('gulp-imagemin')
-      pngquant = require('imagemin-pngquant');
+    pngquant = require('imagemin-pngquant');
 // minify HTML
 
 gulp.task('minify-html1', function() {
@@ -72,7 +72,7 @@ gulp.task('minify', function() {
 
 gulp.task('minify-css', ['mincss1', 'mincss2']);
 
-// optimize images 
+// optimize images
 gulp.task('optimize-image1', function() {
     gulp.src('src/img/*')
         .pipe(imagemin({
