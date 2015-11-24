@@ -8,7 +8,8 @@ gulp.task('default', function() {
 var gulp = require('gulp'),
     uglify = require('gulp-uglify')
     uglifycss = require('gulp-uglifycss')
-    minifyHTML = require('gulp-minify-html');;
+    minifyHTML = require('gulp-minify-html')
+    critical = require('critical');
 
 const imagemin = require('gulp-imagemin')
     pngquant = require('imagemin-pngquant');
@@ -35,6 +36,67 @@ gulp.task('minify-html2', function() {
 });
 gulp.task('minify-html', ['minify-html1', 'minify-html2']);
 
+gulp.task('critical1', function () {
+  critical.generate({
+    base: 'src',
+    src: 'index.html',
+    css: ['src/css/style.css'],
+    width: 320,
+    height: 480,
+    dest: 'index.html',
+    minify:true,
+    inline: true
+  });
+});
+gulp.task('critical2', function () {
+  critical.generate({
+    base: 'src',
+    src: 'project-mobile.html',
+    css: ['src/css/style.css'],
+    width: 320,
+    height: 480,
+    dest: 'project-mobile.html',
+    minify:true,
+    inline: true
+  });
+});
+gulp.task('critical3', function () {
+  critical.generate({
+    base: 'src',
+    src: 'project-webperf.html',
+    css: ['src/css/style.css'],
+    width: 320,
+    height: 480,
+    dest: 'project-webperf.html',
+    minify:true,
+    inline: true
+  });
+});
+
+gulp.task('critical4', function () {
+  critical.generate({
+    base: 'src',
+    src: 'project-2048.html',
+    css: ['src/css/style.css'],
+    width: 320,
+    height: 480,
+    dest: 'project-2048.html',
+    minify:true,
+    inline: true
+  });
+});
+
+
+// minify critical html produced by the above critical tasks 
+gulp.task('minify-critical-html', function() {
+    var opts = {
+        conditionals: true,
+        spare: true
+    };
+    return gulp.src('*.html')
+        .pipe(minifyHTML(opts))
+        .pipe(gulp.dest(''));
+});
 
 // minify JS
 gulp.task('minjs1', function() {
@@ -97,7 +159,11 @@ gulp.task('optimize-image2', function() {
         .pipe(gulp.dest('views/images'));
 });
 
+
+gulp.task('critical', ['critical1', 'critical2', 'critical3', 'critical4']);
 gulp.task('optimize-image', ['optimize-image1', 'optimize-image2']);
 
 // Build function
 gulp.task('build', ['minify-html', 'minify-css', 'minify-js', 'optimize-image']);
+
+gulp.task('build-critical', ['critical', 'minify-critical-html', 'minify-css', 'minify-js', 'optimize-image']);
