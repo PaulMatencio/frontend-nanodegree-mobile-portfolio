@@ -492,7 +492,7 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
   for (var i = numberOfEntries - 1; i > numberOfEntries - 11; i--) {
     sum = sum + times[i].duration;
   }
-  console.log(times.length+ " Average time to generate last " + log + " frames: " + sum /log + "ms");
+  console.log(times.length + " Average time to generate last " + log + " frames: " + sum /log + "ms");
 }
 
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
@@ -502,16 +502,11 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
-  // get  the number sliding pizzas
-  var items = document.querySelectorAll('.mover');
-
-  //console.log(items.length);
-
+  var items = document.querySelectorAll('.mover');// get  the number sliding pizzas
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
-
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
   window.performance.mark("mark_end_frame");
@@ -527,16 +522,17 @@ function updatePositions() {
 window.addEventListener('scroll', updatePositions);
 
 // Generates the sliding pizzas when the page loads.
+// use CSS width and height instead of javascript => img.mover {}
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 50; i++) {
+  for (var i = 0; i < 35; i++) { // limit the number of slidding pizzas
     var elem = document.createElement('img');
     elem.className = 'mover';
     // elem.src = "images/pizza.png";
-    elem.src = "images/pizza_100q_50pc.png";
-    // elem.style.height = "100px";
-    // elem.style.width = "73.333px";
+    elem.src = "images/pizza_100q_50pc.png";  // use smaller image size
+    // elem.style.height = "100px";  => img.mover{}
+    // elem.style.width = "73.333px"; => img.mover{}
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
