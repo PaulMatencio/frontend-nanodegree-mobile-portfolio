@@ -10,11 +10,21 @@
 body {
   font-family: "Trebuchet MS", Helvetica, sans-serif;
   background: black;
+  color: #e0e0e0;
 }
 
 input {
-  background: grey;
+  background: #f0f0f0;
   font-size: 18px;
+  width: 100%;
+  height: 30px;
+  margin: 0 10px 5px 0;
+  border-radius: 15px;
+  border: 1px solid #d6bcd6;
+}
+
+input#sizeSlider {
+  width: 25%;
 }
 
 form {
@@ -34,9 +44,14 @@ form {
   width: 256px;
   z-index: -1;
 }
+
 img.mover {
   height: 100px;
   width: 73.333px;
+}
+
+img.pizzeria {
+  border-radius: 60%;
 }
 
 .randomPizzaContainer {
@@ -44,8 +59,6 @@ img.mover {
   display: flex;
   width: 33.33%;
   height: 325px;
-
-
 }
 
 .randomPizzaContainer:after {
@@ -54,6 +67,7 @@ img.mover {
   clear:both;
 }
 
- .container {
-  background-color: rgba(240, 60, 60, 0.8);
+.container {
+  /* background-color: rgba(240, 60, 60, 0.8); */
+  background-color: rgba(58, 128, 128, 0.7);
 }
