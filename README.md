@@ -6,7 +6,9 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 
 ####GENERAL STRATEGIES
 
-#####1) Minimize HTML , CSS and JavaScript size
+#####1) Minimize the size of HTML, CSS and JavaScript files
+
+	a) node.js gulp is used for this purpose. You can read the gulpfile.js under the project root directory <project-directory>
 
 #####2) Minimize use of render blocking resources (CSS)
 
@@ -22,35 +24,79 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 
 
 ###TOOLS:
- 
+
+The source codes are in the <project directory>/src
+The deployment ( minimiziing, inlining, optimizing of the source codes) from the <project-directory>/src  directory to <project-directory> is done via node.js gulp.
+
 ####1) convert Linux command line to resize  images size
 ####2) node.js gulp. The gulpfile.js contains all the tasks needed to implement the above general strategies
 
 
-#GOOGLE PAGESPEED tests: > 90 for mobiles and desktop
+###GOOGLE PAGESPEED tests:
+
+####index.html http://paulmatencio.github.io/frontend-nanodegree-mobile-portfolio/index.html
+	92 / 100 Mobile Speed
+	94 / 100 Deskzop Speed
+####project-2048.html http://paulmatencio.github.io/frontend-nanodegree-mobile-portfolio/project-2048.html
+	94 / 100 Mobile Speed
+	96 / 100 Deskzop Speed
+####project-2048.html http://paulmatencio.github.io/frontend-nanodegree-mobile-portfolio/project-mobile.html
+	94 / 100 Mobile Speed
+	96 / 100 Deskzop Speed
+####project-2048.html http://paulmatencio.github.io/frontend-nanodegree-mobile-portfolio/project-webperf.html
+	94 / 100 Mobile Speed
+	96 / 100 Deskzop Speed
 
 
-####Part 2: Optimize Frames per Second in pizza.html
+###Part 2: Optimize Frames per Second in pizza.html
 
 Add viewport to improve user experience experience
 Apply same stratgies for part 1
 
 #####LOOP OPTIMZATION
 
-#####Reduce the number of loops
+#####Reduce the number of loop counts
+
 	Reduce the number of loops when over looping is uncessary for better user eperience. As for instance, reduce the number of moving pizza from 200 to 50 or even less. The current main.js has 40 moving pizzas.
 
-#####Reduce cost loop
-	move constant off the loop. As for instance, the computation for old size and new size. This can be done ouside the resizePizza() loop once.
+#####Reduce the cost of loop
+
+	Move invariant  off the loop. As for instance, the computation for old size and new size of the pizza. This can be done ouside the resizePizza() loop once.
+
+####Objectives
+	60 fps or higher.
+	Tome to resize pizzas < 5ms
+
+	You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
 
 
+##### FPS and pizza resizing ( http://paulmatencio.github.io/frontend-nanodegree-mobile-portfolio/views/pizza.html)
 
+Time to generate pizzas on load: 16.015ms
 
+main.js:1 10 Average time to generate last 10 frames: 6.298500000000135ms
+main.js:1 20 Average time to generate last 10 frames: 4.834500000000207ms
+main.js:1 30 Average time to generate last 10 frames: 4.370500000000175ms
+main.js:1 40 Average time to generate last 10 frames: 4.839499999999862ms
+main.js:1 50 Average time to generate last 10 frames: 4.640999999999986ms
+main.js:1 60 Average time to generate last 10 frames: 4.798500000000058ms
+main.js:1 70 Average time to generate last 10 frames: 4.597500000000037ms
+main.js:1 80 Average time to generate last 10 frames: 4.682999999999902ms
+main.js:1 90 Average time to generate last 10 frames: 5.227499999999873ms
+main.js:1 100 Average time to generate last 10 frames: 5.172999999999865ms
 
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
+Time to resize pizzas: 3.695000000006985ms
 
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
+###SUPPORT DOCUMENTATION
+####Udacity P4 supporting courses
+* https://www.udacity.com/course/viewer#!/c-ud884-nd/l-3342528615
+* https://www.udacity.com/course/viewer#!/c-ud860-nd/l-4127088573
 
+####Udacity discussion forum
+* https://discussions.udacity.com/categories
+
+####Udacity team room
+* https://www.udacity.com/teams/#/chat/nd001
 
 
 ### Optimization Tips and Tricks
