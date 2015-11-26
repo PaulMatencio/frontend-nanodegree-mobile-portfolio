@@ -2,33 +2,42 @@
 
 Your challenge, if you wish to accept it (and we sure hope you will), is to optimize this online portfolio for speed! In particular, optimize the critical rendering path and make this page render as quickly as possible by applying the techniques you've picked up in the [Critical Rendering Path course](https://www.udacity.com/course/ud884).
 
-To get started, check out the repository, inspect the code,
-
-### Getting started
-
 ####Part 1: Optimize PageSpeed Insights score for index.html
 
-Some useful tips to help you get started:
+General strategies:
 
-1. Check out the repository
-1. To inspect the site on your phone, you can run a local server
+1) Minimize use of render blocking resources (CSS)
+	a) Use media queries on <link> to unblock rendering where it is possible
+	b) inline CSS
+	c) async load of CSS fonts
 
-  ```bash
-  $> cd /path/to/your-project-folder
-  $> python -m SimpleHTTPServer 8080
-  ```
 
-1. Open a browser and visit localhost:8080
-1. Download and install [ngrok](https://ngrok.com/) to make your local server accessible remotely.
+2) Minimize use of parser blocking resources (JS)
+	a) Defer JavaScript execution
+	b) Use async attribute on <script>  when it is possible
 
-  ``` bash
-  $> cd /path/to/your-project-folder
-  $> ngrok 8080
-  ```
 
-1. Copy the public URL ngrok gives you and try running it through PageSpeed Insights! Optional: [More on integrating ngrok, Grunt and PageSpeed.](http://www.jamescryer.com/2014/06/12/grunt-pagespeed-and-ngrok-locally-testing/)
+Tools:
 
-Profile, optimize, measure... and then lather, rinse, and repeat. Good luck!
+3) Use tools such as node.js gulp or grunt. The gulpfile.js contains all the tasks needed to implement the above general strategies 
+
+For this project, I use the Linux convert line command to reduce quality and size of images and gulp to lossless compress them.  
+
+
+Google pagespeed tests:
+
+1) index.html  			 92/93
+
+2) project-2048.html 		 94/96
+
+3) project-mobile.html  	 94/96
+
+4) project-webperf.html 	 94/96
+
+5) views/pizza.html     	 81/96   ( with viewport)
+
+6) view/pizza.html       	 92/93   ( without viewport)  
+
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
