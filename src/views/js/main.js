@@ -418,6 +418,7 @@ var resizePizzas = function(size) {
         console.log("bug in changeSliderLabel");
     }
   }
+  
   // return the selected  pizza size measured in percentage
   function sizeSwitcher (size) {
       switch(size) {
@@ -431,17 +432,21 @@ var resizePizzas = function(size) {
           console.log("bug in sizeSwitcher");
       }
     }
+
   // Iterates through pizza elements on the page and changes their widths   
   // newwidth is measured in percentage
+  // Move the computation for old size and new size out off the loop. This can be done once since pizzas are identical
+  // use  style.width percentage instead of pixel ( not necesserally faster but better code reading)
   function changePizzaSizes(newwidth,numberOfPizza) {
     for (var i = 0; i < numberOfPizza; i++) {
       document.getElementsByClassName("randomPizzaContainer")[i].style.width = newwidth;
     }
   } 
-  changeSliderLabel(size);
-  var pizzaNumber = document.querySelectorAll(".randomPizzaContainer").length ;
-  var newwidth = sizeSwitcher(size) ;
-  changePizzaSizes(newwidth,pizzaNumber);
+
+  changeSliderLabel(size); // update the slider label
+  var pizzaNumber = document.querySelectorAll(".randomPizzaContainer").length ; // get the number of sliding pizzas
+  var newwidth = sizeSwitcher(size) ; // return width in percentage
+  changePizzaSizes(newwidth,pizzaNumber); // change pizzas size
 
   // User Timing API is awesome
   window.performance.mark("mark_end_resize");
@@ -510,10 +515,14 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 40; i++) { // limit the number of slidding pizzas
+  // Reduce the number of loops when over looping is uncessary for better user eperience. 
+  // Reduce the number of moving pizza from 200 to 40  
+  // Reduce sliding pizza image size  
+  // Move img style to CSS 
+  for (var i = 0; i < 40; i++) {   
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza_100q_35pc.png";  // use smaller image size
+    elem.src = "images/pizza_100q_35pc.png";   
     // elem.style.height = "100px";   // => img.mover css class
     // elem.style.width = "73.333px"; // => img.mover css class
     elem.basicLeft = (i % cols) * s;

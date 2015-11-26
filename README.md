@@ -4,46 +4,54 @@ Your challenge, if you wish to accept it (and we sure hope you will), is to opti
 
 ####Part 1: Optimize PageSpeed Insights score for index.html
 
-General strategies:
+####GENERAL STRATEGIES
 
-1) Minimize use of render blocking resources (CSS)
+#####1) Minimize HTML , CSS and JavaScript size
+
+#####2) Minimize use of render blocking resources (CSS)
+
 	a) Use media queries on <link> to unblock rendering where it is possible
 	b) inline CSS
-	c) async load of CSS fonts
+	c) async load of CSS google fonts
 
 
-2) Minimize use of parser blocking resources (JS)
+#####3) Minimize use of parser blocking resources (JS)
+
 	a) Defer JavaScript execution
 	b) Use async attribute on <script>  when it is possible
 
 
-Tools:
+###TOOLS:
+ 
+####1) convert Linux command line to resize  images size
+####2) node.js gulp. The gulpfile.js contains all the tasks needed to implement the above general strategies
 
-3) Use tools such as node.js gulp or grunt. The gulpfile.js contains all the tasks needed to implement the above general strategies 
 
-For this project, I use the Linux convert line command to reduce quality and size of images and gulp to lossless compress them.  
-
-
-Google pagespeed tests:
-
-1) index.html  			 92/93
-
-2) project-2048.html 		 94/96
-
-3) project-mobile.html  	 94/96
-
-4) project-webperf.html 	 94/96
-
-5) views/pizza.html     	 81/96   ( with viewport)
-
-6) view/pizza.html       	 92/93   ( without viewport)  
+#GOOGLE PAGESPEED tests: > 90 for mobiles and desktop
 
 
 ####Part 2: Optimize Frames per Second in pizza.html
 
+Add viewport to improve user experience experience
+Apply same stratgies for part 1
+
+#####LOOP OPTIMZATION
+
+#####Reduce the number of loops
+	Reduce the number of loops when over looping is uncessary for better user eperience. As for instance, reduce the number of moving pizza from 200 to 50 or even less. The current main.js has 40 moving pizzas.
+
+#####Reduce cost loop
+	move constant off the loop. As for instance, the computation for old size and new size. This can be done ouside the resizePizza() loop once.
+
+
+
+
+
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
 
 You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
+
+
 
 ### Optimization Tips and Tricks
 * [Optimizing Performance](https://developers.google.com/web/fundamentals/performance/ "web performance")
