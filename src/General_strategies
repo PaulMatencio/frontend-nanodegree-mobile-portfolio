@@ -22,24 +22,29 @@ Minimize use of parser blocking resources (JS)
 	Use async attribute on <script>  when it is possible
 
 
-futher reading http://csstriggers.com/
 
-Use tools such as node.js gulp or grunt. The gulpfile.js contains all the tasks needed to implement the above general strategies 
 
-For this project, I use the Linux convert line command to reduce quality and size of images and gulp to lossless compress them.  
+Use tools such as node.js gulp or grunt. The gulpfile.js contains all the tasks needed to implement the above general strategies
 
-Google pagespeed 
+For this project, I use the Linux convert line command to reduce quality and size of images and gulp to lossless compress them.
+
+Google pagespeed
 
 index.html  			 92/93
 project-2048 html 		 94/96
 project-mobile.html  	 94/96
 project-webperf.html 	 94/96
 views/pizza.html     	 81/96   ( with viewport)
-view/pizza.html       	 92/93   ( without viewport)  
+view/pizza.html       	 92/93   ( without viewport)
 
 2) Part 2
 
-	Apply same strategies as for part 1. 
+	Apply same strategies as for part 1.
 	Add viewport to improve user expereiences
-Reduce the number of loops when over looping is useless and impact performance. As for instance, the number of moving pizza was  
+Reduce the number of loops when over looping is useless and impact performance. As for instance, the number of moving pizza was
 
+
+further reading
+
+http://udacity.github.io/60fps/images/time-table.jpg
+http://csstriggers.com/
