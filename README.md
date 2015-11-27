@@ -72,7 +72,7 @@ Apply same stratgies for part 1
 
 ##### FPS and pizza resizing ( http://paulmatencio.github.io/frontend-nanodegree-mobile-portfolio/views/pizza.html)
 
-Time to generate pizzas on load: 16.015ms
+Time to generate pizzas on load: 16.015ms <<<
 
 main.js:1 10 Average time to generate last 10 frames: 6.298500000000135ms
 main.js:1 20 Average time to generate last 10 frames: 4.834500000000207ms
